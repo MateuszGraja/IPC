@@ -1,0 +1,20 @@
+===============================================================
+    Instrukcja kompilacji:
+===============================================================
+gcc common.c -c inf155901_155859_k.c -c inf155901_155859_s.c -c
+gcc common.o inf155901_155859_k.o -o out/inf155901_155859_k
+gcc common.o inf155901_155859_s.o -o out/inf155901_155859_s
+
+UWAGA: Stworzyliśmy dodatkowo skrypt build.sh żeby usprawnić robotę. Dodatkowo usuwa on zbędne pliki obiektu *.o.
+===============================================================
+    Instrukcja uruchomienia:
+===============================================================
+./out/inf155901_155859_k
+./out/inf155901_155859_s
+
+===============================================================
+    Informacje o plikach *.c
+===============================================================
+common.c - zawiera funkcjonalności współdzielone między pozostałymi plikami *.c lub funkcjonalności przeniesione w celu upiększenia struktury plików
+inf155901_155859_k.c - zawiera funkcjonalności dotyczące klienta
+inf155901_155859_s.c - zawiera funkcjonalności dotyczące serwera

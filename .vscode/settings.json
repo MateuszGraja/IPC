@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "structs.h": "c",
+        "operationtypeenum.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
