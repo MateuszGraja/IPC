@@ -1,7 +1,11 @@
 {
     "files.associations": {
         "structs.h": "c",
-        "operationtypeenum.h": "c"
+        "operationtypeenum.h": "c",
+        "string.h": "c",
+        "common.h": "c",
+        "constants.h": "c",
+        "printer.h": "c"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "enabled"
 }

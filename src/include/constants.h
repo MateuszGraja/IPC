@@ -1,5 +1,5 @@
-#ifndef CONSTANTS
-#define CONSTANTS
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #define IPC_SERVER_KEY 6969
 #define MAX_MSG_LENGTH 512

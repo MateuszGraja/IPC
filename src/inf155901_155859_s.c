@@ -28,6 +28,7 @@ int main(int argc, char const *argv[])
         if (msgrcv(server_queue, &loginMessage, sizeof(loginMessage) - sizeof(loginMessage.mtype), LOGIN, 0) != -1)
         // if (msgrcv(server_queue, &loginMessage, getContentSize(&loginMessage), LOGIN, 0) != -1)
         {
+            printf("LOGGIN SERVER");
             if (user_count < MAX_USERS)
             {
                 int client_pid = loginMessage.client.pid;
@@ -47,6 +48,8 @@ int main(int argc, char const *argv[])
         {
             printf("ZLE\n");
         };
+
+        
 
         // msgrcv(server_queue, &messageBase, sizeof(messageBase) - sizeof(messageBase.mtype), 0, 0);
 

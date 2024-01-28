@@ -4,10 +4,10 @@
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <string.h>
-#include "include/constants.h"
-#include "include/structs.h"
-#include "include/common.h"
-#include "include/enums/OperationTypeEnum.h"
+#include "../include/constants.h"
+#include "../include/structs.h"
+#include "../include/common.h"
+#include "../include/enums/OperationTypeEnum.h"
 
 // Clear the input buffer to avoid an infinite loop
 void clearBuffer()
@@ -17,32 +17,32 @@ void clearBuffer()
         ;
 }
 
-void printHeader()
-{
-    printf("\n");
-    for (int i = 0; i < 30; ++i)
-    {
-        printf("=");
-    }
-    printf("\n");
+// void printHeader()
+// {
+//     printf("\n");
+//     for (int i = 0; i < 30; ++i)
+//     {
+//         printf("=");
+//     }
+//     printf("\n");
 
-    for (int i = 0; i < 11; ++i)
-    {
-        printf("-");
-    }
-    printf("OPTIONS");
-    for (int i = 0; i < 11; ++i)
-    {
-        printf("-");
-    }
-    printf("\n");
+//     for (int i = 0; i < 11; ++i)
+//     {
+//         printf("-");
+//     }
+//     printf("OPTIONS");
+//     for (int i = 0; i < 11; ++i)
+//     {
+//         printf("-");
+//     }
+//     printf("\n");
 
-    for (int i = 0; i < 30; ++i)
-    {
-        printf("=");
-    }
-    printf("\n");
-}
+//     for (int i = 0; i < 30; ++i)
+//     {
+//         printf("=");
+//     }
+//     printf("\n");
+// }
 
 static int getInputInteger()
 {
@@ -57,7 +57,7 @@ static int getInputInteger()
 
 enum OperationTypes displayInitialMenu()
 {
-    printHeader();
+    // printHeader();
 
     printf("1) Log In\n");
     printf("2) Register\n");

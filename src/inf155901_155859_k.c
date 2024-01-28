@@ -9,6 +9,7 @@
 #include "include/constants.h"
 #include "include/common.h"
 #include "include/structs.h"
+#include "include/printer.h"
 
 int main(int argc, char const *argv[])
 {
@@ -19,18 +20,20 @@ int main(int argc, char const *argv[])
 
     enum OperationTypes operationType = displayInitialMenu();
 
-    printf("%d", operationType);
+    struct LoginMessage loginMsg;
+
     switch (operationType)
     {
     case LOGIN:
+        printHeader("Login", 40);
+
         char name[MAX_NAME_LENGTH];
         displayLoginMenu(name);
 
-        struct LoginMessage msg;
-        msg.mtype = LOGIN;
-        msg.client.pid = getpid();
-        strcpy(msg.client.name, name);
-        msgsnd(server_queue, &msg, sizeof(msg.client), 0);
+        loginMsg.mtype = LOGIN;
+        loginMsg.client.pid = getpid();
+        strcpy(loginMsg.client.name, name);
+        msgsnd(server_queue, &loginMsg, sizeof(loginMsg) - sizeof(loginMsg.mtype), 0);
 
         break;
     case REGISTER:

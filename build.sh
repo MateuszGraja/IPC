@@ -1,8 +1,10 @@
 #!/bin/bash
 
-gcc -c common.c inf155901_155859_k.c inf155901_155859_s.c
+# -Werror
+gcc -Wall -c src/utils/*.c src/*.c
 
-gcc common.o inf155901_155859_k.o -o out/inf155901_155859_k
-gcc common.o inf155901_155859_s.o -o out/inf155901_155859_s
+# Potrzebujemy wszystkich składowych plików oprócz klienta w serwerze i odwrotnie 
+gcc $(ls *.o | grep -v inf155901_155859_s.o) -o out/inf155901_155859_k
+gcc $(ls *.o | grep -v inf155901_155859_k.o) -o out/inf155901_155859_s
 
-rm common.o inf155901_155859_k.o inf155901_155859_s.o
+rm *.o
