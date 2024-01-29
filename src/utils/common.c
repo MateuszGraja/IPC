@@ -1,13 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/ipc.h>
-#include <sys/msg.h>
 #include <string.h>
-#include "../include/constants.h"
-#include "../include/structs.h"
 #include "../include/common.h"
-#include "../include/enums/OperationTypeEnum.h"
 
 // Clear the input buffer to avoid an infinite loop
 void clearBuffer()
@@ -17,34 +11,7 @@ void clearBuffer()
         ;
 }
 
-// void printHeader()
-// {
-//     printf("\n");
-//     for (int i = 0; i < 30; ++i)
-//     {
-//         printf("=");
-//     }
-//     printf("\n");
-
-//     for (int i = 0; i < 11; ++i)
-//     {
-//         printf("-");
-//     }
-//     printf("OPTIONS");
-//     for (int i = 0; i < 11; ++i)
-//     {
-//         printf("-");
-//     }
-//     printf("\n");
-
-//     for (int i = 0; i < 30; ++i)
-//     {
-//         printf("=");
-//     }
-//     printf("\n");
-// }
-
-static int getInputInteger()
+int getInputInteger()
 {
     int userInput;
     while (scanf("%d", &userInput) != 1)
@@ -55,55 +22,26 @@ static int getInputInteger()
     return userInput;
 }
 
-enum OperationTypes displayInitialMenu()
+int getInputIntegerMinMax(int min, int max)
 {
-    // printHeader();
-
-    printf("1) Log In\n");
-    printf("2) Register\n");
-    printf("9) Exit\n");
-
-    int choice = getInputInteger();
-
-    switch (choice)
+    int userInput;
+    while (scanf("%d", &userInput) != 1 && userInput >= min && userInput <= max)
     {
-    case 1:
-        return LOGIN;
-    case 2:
-        return REGISTER;
-    case 3:
-        return NONE;
-    default:
-        return NONE;
+        printf("Enter a valid integer.\n");
+        clearBuffer();
     }
-};
+    return userInput;
+}
 
-void displayLoginMenu(char *name)
+unsigned long hash(const char *str)
 {
-    printf("\n");
+    unsigned long hash = 5381;
+    int c;
 
-    printf("Provide name to log in...\n");
+    while ((c = *str++))
+    {
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
 
-    scanf("%49s", name);
-};
-
-void displayRegisterMenu()
-{
-    printf("\n");
-
-    printf("Provide name to log in...\n");
-
-    char name[MAX_NAME_LENGTH];
-
-    scanf("%49s", name);
-};
-
-size_t getContentSize(void *ptr)
-{
-    return sizeof(*ptr) - sizeof(unsigned long);
-};
-
-// size_t getContentSize(struct MessageBase *msg)
-// {
-//     return sizeof(*msg) - sizeof(msg->mtype);
-// };
+    return hash;
+}

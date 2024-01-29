@@ -30,3 +30,8 @@ void printCharacter(char character, int count)
     }
     printf("\n");
 }
+
+void printClear()
+{
+    printf("\033[2J\033[H");
+}

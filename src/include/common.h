@@ -1,20 +1,12 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include "enums/OperationTypeEnum.h"
-#include "structs.h"
+void clearBuffer();
 
-extern void clearBuffer();
+int getInputInteger();
 
-// extern void printHeader();
+int getInputIntegerMinMax(int min, int max);
 
-extern enum OperationTypes displayInitialMenu();
-
-extern void displayLoginMenu(char *name);
-
-extern void displayRegisterMenu();
-
-extern size_t getContentSize(void *ptr);
-// extern size_t getContentSize(struct MessageBase *msg);
+unsigned long hash(const char *str);
 
 #endif

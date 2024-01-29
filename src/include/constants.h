@@ -4,6 +4,8 @@
 #define IPC_SERVER_KEY 6969
 #define MAX_MSG_LENGTH 512
 #define MAX_USERS 69
+#define MAX_TOPICS 20
 #define MAX_NAME_LENGTH 50
+#define MSG_CODE_LENGTH 15
 
 #endif

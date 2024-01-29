@@ -5,7 +5,10 @@
         "string.h": "c",
         "common.h": "c",
         "constants.h": "c",
-        "printer.h": "c"
+        "printer.h": "c",
+        "ipc.h": "c",
+        "types.h": "c",
+        "menus.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
