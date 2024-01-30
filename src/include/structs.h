@@ -3,6 +3,38 @@
 
 #include "constants.h"
 
+// Struktury dot. tematów
+
+struct TopicSettings
+{
+    char name[MAX_NAME_LENGTH];
+    unsigned short int max_messages;
+    unsigned short int messages_count;
+};
+
+struct Topic
+{
+    char code[MSG_CODE_LENGTH];
+    struct TopicSettings settings[MAX_USERS];
+    unsigned short int settings_count;
+};
+
+// Struktury dot. użytkowników
+
+struct User
+{
+    // Id - identyfikuje konkretną sesję/proces
+    int id;
+    char name[MAX_NAME_LENGTH];
+};
+
+struct UserSettings
+{
+    char name[MAX_NAME_LENGTH];
+    char banned_by_users[MAX_USERS][MAX_NAME_LENGTH];
+    unsigned short int banned_by_users_count;
+};
+
 // Struktury komunikatów
 
 struct MessageBase
@@ -35,6 +67,13 @@ struct RegisterMessage
     } client;
 };
 
+struct BanMessage
+{
+    long mtype; 
+    char name[MAX_NAME_LENGTH];
+    char name_to_ban[MAX_NAME_LENGTH]; 
+};
+
 struct SubscribeTopicMessage
 {
     long mtype;
@@ -63,35 +102,17 @@ struct ServerResponseMessage
     } response;
 };
 
-// Struktury dot. użytkowników
-
-struct User
+// Komunikat dla rozgłaszania/wysyłania wiadomości - unlucky nazwa
+struct BroadcastTextMessage
 {
-    // Id - identyfikuje konkretną sesję/proces
-    int id;
+    long mtype;
     char name[MAX_NAME_LENGTH];
-};
-
-struct UserSettings
-{
-    char name[MAX_NAME_LENGTH];
-    struct UserSettings *banned_users[MAX_USERS];
-};
-
-// Struktury dot. tematów
-
-struct TopicSettings
-{
-    char name[MAX_NAME_LENGTH];
-    unsigned short int max_messages;
-    unsigned short int messages_count;
-};
-
-struct Topic
-{
-    char code[MSG_CODE_LENGTH];
-    struct TopicSettings settings[MAX_USERS];
-    unsigned short int settings_count;
+    struct Message
+    {
+        char code[MSG_CODE_LENGTH];
+        char text[512];
+        unsigned int priority;
+    } message;
 };
 
 #endif

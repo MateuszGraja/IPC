@@ -8,7 +8,9 @@
         "printer.h": "c",
         "ipc.h": "c",
         "types.h": "c",
-        "menus.h": "c"
+        "menus.h": "c",
+        "unistd.h": "c",
+        "stdbool.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

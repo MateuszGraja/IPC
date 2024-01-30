@@ -2,6 +2,18 @@
 #include <string.h>
 
 #include "../include/printer.h"
+#include "../include/structs.h"
+
+void printMessage(struct BroadcastTextMessage broadcastTextMessage, int width)
+{
+    printCharacter('=', width);
+    printf("\tType:\t%s\n", broadcastTextMessage.message.code);
+    printCharacter('-', width);
+    printf("\tAuthor:\t%s\n", broadcastTextMessage.name);
+    printCharacter('-', width);
+    printf("\t%s\n", broadcastTextMessage.message.text);
+    printCharacter('=', width);
+}
 
 void printHeader(const char *text, int width)
 {
@@ -33,5 +45,9 @@ void printCharacter(char character, int count)
 
 void printClear()
 {
-    printf("\033[2J\033[H");
+    for (size_t i = 0; i < 10; i++)
+    {
+        printf("\n");
+    }
+    // printf("\033[2J\033[H");
 }

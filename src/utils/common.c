@@ -25,7 +25,7 @@ int getInputInteger()
 int getInputIntegerMinMax(int min, int max)
 {
     int userInput;
-    while (scanf("%d", &userInput) != 1 && userInput >= min && userInput <= max)
+    while (scanf("%d", &userInput) != 1 || userInput < min || userInput > max)
     {
         printf("Enter a valid integer.\n");
         clearBuffer();
